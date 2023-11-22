@@ -19,9 +19,12 @@ public class UserController {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private Logger log = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private CartRepository cartRepository;
 
@@ -52,7 +55,8 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
         try {
             if (createUserRequest.getUsername() != null && createUserRequest.getPassword() != null) {
-                if (!createUserRequest.getConfirmPassword().equals(createUserRequest.getPassword())) {
+                if (!createUserRequest.getConfirmPassword().equals(createUserRequest.getPassword())
+                        || createUserRequest.getPassword().length() < 8) {
                     log.error("Error with user password.");
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
                 }
