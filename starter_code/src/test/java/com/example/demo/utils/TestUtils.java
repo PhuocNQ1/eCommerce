@@ -11,25 +11,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class TestUtils {
-    public static void injectObjects(Object target, String fieldName, Object toInject) {
-
-        boolean wasPrivate = false;
-
+    public static void injectObjects(Object targetObject, String fieldName, Object valueToInject) {
         try {
-            Field f = target.getClass().getDeclaredField(fieldName);
+            Class<?> targetClass = targetObject.getClass();
+            Field targetField = targetClass.getDeclaredField(fieldName);
 
-            if (!f.isAccessible()) {
-                f.setAccessible(true);
-                wasPrivate = true;
-            }
-            f.set(target, toInject);
+            boolean wasAccessible = targetField.isAccessible();
 
-            if (wasPrivate) {
-                f.setAccessible(false);
+            try {
+                if (!wasAccessible) {
+                    targetField.setAccessible(true);
+                }
+
+                targetField.set(targetObject, valueToInject);
+            } finally {
+                if (!wasAccessible) {
+                    targetField.setAccessible(false);
+                }
             }
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }

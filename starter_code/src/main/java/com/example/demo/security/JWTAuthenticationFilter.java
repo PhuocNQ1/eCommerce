@@ -28,7 +28,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     /**
-     *
      * @param req
      * @param res
      * @return
@@ -52,7 +51,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     /**
-     *
      * @param req
      * @param res
      * @param chain

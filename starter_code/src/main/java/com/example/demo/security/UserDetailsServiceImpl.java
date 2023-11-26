@@ -17,7 +17,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
 
     /**
-     *
      * @param username
      * @return
      * @throws UsernameNotFoundException

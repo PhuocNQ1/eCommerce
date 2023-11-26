@@ -27,7 +27,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     *
      * @param http
      * @throws Exception
      */
@@ -43,7 +42,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     *
      * @return
      * @throws Exception
      */
@@ -54,7 +52,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     *
      * @param auth
      * @throws Exception
      */

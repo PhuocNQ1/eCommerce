@@ -5,8 +5,7 @@ import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.repositories.CartRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.CreateUserRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
 
+    private static final Logger log = Logger.getLogger(OrderController.class);
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    private Logger log = LoggerFactory.getLogger(UserController.class);
-
     @Autowired
     private UserRepository userRepository;
 
@@ -39,14 +36,14 @@ public class UserController {
             User user = userRepository.findByUsername(username);
 
             if (user == null) {
-                log.warn("User with username '{}' not found.", username);
+                log.warn("User with username '{" + username + "}' not found.");
                 return ResponseEntity.notFound().build();
             } else {
-                log.info("User found with username '{}'.", username);
+                log.info("User found with username '{" + username + "}'.");
                 return ResponseEntity.ok(user);
             }
         } catch (Exception e) {
-            log.error("Error finding user by username '{}'.", username, e);
+            log.error("Error finding user by username '{" + username + "}'.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -70,7 +67,7 @@ public class UserController {
 
                 userRepository.save(user);
 
-                log.info("User created successfully. Username: {}", user.getUsername());
+                log.info("User created successfully. Username: {" + user.getUsername() + "}");
                 return ResponseEntity.ok(user);
             } else {
                 log.error("Invalid request. Username or password is null.");

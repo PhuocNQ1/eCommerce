@@ -1,0 +1,5 @@
+2023-11-26 10:58:38 INFO  OrderController:72 - User created successfully. Username: {PhuocNQ}
+2023-11-26 10:58:39 INFO  OrderController:29 - Received order submission request for user: {Milk}
+2023-11-26 10:58:39 INFO  OrderController:40 - Order submitted successfully for user: {Milk}, Order ID: {null}
+2023-11-26 10:58:39 INFO  OrderController:47 - Retrieving order history for user: {Milk}
+2023-11-26 10:58:39 INFO  OrderController:57 - Order history retrieved successfully for user: {Milk}

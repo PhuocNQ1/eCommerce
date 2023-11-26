@@ -24,7 +24,6 @@ public class JWTAuthenticationVerficationFilter extends BasicAuthenticationFilte
     }
 
     /**
-     *
      * @param req
      * @param res
      * @param chain
@@ -48,7 +47,6 @@ public class JWTAuthenticationVerficationFilter extends BasicAuthenticationFilte
     }
 
     /**
-     *
      * @param req
      * @return
      */
